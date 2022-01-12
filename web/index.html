@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.min.css">
+
+    <meta name="theme-color" content="#fafafa">
+
+    <script src="https://kit.fontawesome.com/70c0d0128c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="header">
+
+            <div id="header-title">
+                <a id="graph-title-link" href="#">
+                    <img src="favicon-96x96.png" width="48" height="48" />
+                    &nbsp;&nbsp;
+                    Knowledge Graph<span id="current-partition"></span></a>
+            </div>
+
+            <div id="target-env"></div>
+
+        </div>
+
+        <div id="top-nav">
+            <nav>
+                <ul>
+                    <li><a role="button" class="outline" id="btn-export" 
+                            data-tooltip="Export"><i class="fas fa-download"></i></a></li>
+                            
+                    <li><a role="button" class="outline" id="btn-import" 
+                        data-tooltip="Import"><i class="fas fa-upload"></i></a>
+                        <input type="file" id="import-file" style="display:none">
+                    </li>
+
+                    <li><a role="button" class="outline" id="btn-grid"   
+                            data-tooltip="Table"><i class="fas fa-table"></i></a></li>
+
+                    <li><a role="button" class="outline" id="btn-canvas" 
+                            data-tooltip="Graph"><i class="fas fa-project-diagram"></i></a></li>
+
+                    <li><a href="#new-node-modal" role="button" class="outline" id="btn-canvas" 
+                            data-tooltip="New Node"><i class="fas fa-plus"></i></a></li>
+
+                    <li><input type="text" id="txt-find" placeholder="Find a node..."  /></li>
+                </ul>
+            </nav>
+            <div id="export-url"></div>
+        </div>
+
+        <div id="content">
+
+
+            <div id="left">
+            
+
+                <div id="props">
+                    
+                </div>
+
+
+                <!-- <div id="import">
+                    <textarea id="txt-import"></textarea>
+                    <a role="button" class="outline" id="btn-import">Import</a>
+                </div> -->
+
+            </div>
+
+            <div id="right">
+                <div id="canvas-container">
+                    <canvas id="canvas"></canvas>
+                </div>
+                <div id="grid-container"></div>
+                <div id="parts-container"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="new-node-modal" class="modal-dialog">
+        <div> <a href="#close" title="Close" class="close">X</a>
+            Create a new node. <br />
+            Label: <input type="text" id="txt-new-node-label" /> <br />
+            Name: <input type="text" id="txt-new-node-name" /> <br />
+            <a role="button" class="outline" id="btn-new-node">New Node</a>
+            <div id="new-node-error"></div>
+        </div>
+    </div>
+
+
+    
+
+    <div id="jwt-modal" class="modal-dialog">
+        <div> <a href="#close" title="Close" class="close">X</a>
+            <div id="jwt-modal-content"></div>
+        </div>
+    </div>
+
+    <script type="module" src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script type="module" src="js/plugins.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+</body>
+
+</html>

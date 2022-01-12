@@ -1,0 +1,89 @@
+<article>
+  <header>
+    <nav>
+      <ul>
+        <li>{{ header }}</li>
+        <li> 
+          {{ #labels }}
+            <div id="node-label-{{ label }}" class="node-label">{{ label }}</div>
+          {{ /labels }}
+        </li>
+      </ul>
+    </nav>  
+  </header>
+   
+<div id="node-view">
+
+  <div id="node-view-nav">
+    <nav>
+      <ul>
+        <li><a role="button" class="outline" id="btn-delete-node" 
+              data-tooltip="Delete Node"><i class="fas fa-eraser" title="Delete Node"></i></a></li>
+        <li><a role="button" class="outline" id="btn-show-add-prop" 
+                href="#add-property-modal"
+                data-tooltip="Add Property"><i class="fas fa-plus"></i></a></li>
+        <li><a role="button" class="outline" id="btn-show-add-edge" 
+                href="#add-edge-modal"
+                data-tooltip="Add Edge"><i class="fas fa-arrow-right"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div id="properties"> 
+      {{ #kv }}
+      <div class="prop-row">
+        <div class="prop-key">{{ key }}:</div>
+        <div class="prop-value">{{ value }}</div>
+        <a role="button" class="outline" 
+           data-tooltip="Delete Prop" id="prop-x-{{ key }}"><i class="fas fa-minus"></i></a>
+      </div>
+      {{ /kv }}
+  </div>
+ 
+  <div id="node-delete">
+    
+  </div>
+
+  <hr/>
+  <div id="node-id">{{id}}</div>
+</div>
+
+
+<div id="add-property-modal" class="modal-dialog">
+  <div> <a href="#close" title="Close" class="close">X</a>
+    Add property: <br/>
+    Name: <input id="txt-prop-name" type="text" />
+    Value: <input id="txt-prop-value" type="text" />
+    <a role="button" class="outline" id="btn-add-prop">Add</a>
+  </div>
+</div>
+
+<div id="node-str-modal" class="modal-dialog">
+  <div> <a href="#close" title="Close" class="close">X</a>
+    {{ nodestr }}
+  </div>
+</div>
+
+<div id="add-edge-modal" class="modal-dialog">
+  <div> <a href="#close" title="Close" class="close">X</a>
+    <div id="add-edge">
+        Add an edge
+        <input type="text" id="txt-edge-label" placeholder="Edge Label" />
+        <span id="node-edge-from"></span>
+        -<span id="node-edge-label"></span>-&gt; <span id="node-edge-to"></span><br />
+        <button id="btn-node-edge-from">Add Edge</button>
+
+        <div id="all-labels">
+        
+        </div>
+    </div>
+    <div id="add-edge-hide">
+        To add an edge, select two consecutive difference nodes. 
+        For example, if you want to create an edge from nodes called "John" and "Bob", 
+        first click on "John", then "Bob", then click the button to add the edge.
+    </div>
+  </div>
+</div>
+
+</article>

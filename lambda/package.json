@@ -1,0 +1,32 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "edge.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.1",
+    "aws-sdk": "^2.1025.0",
+    "aws4": "^1.11.0",
+    "axios": "^0.24.0",
+    "gremlin": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
+    "neptune-gremlin": "^0.0.4",
+    "qs": "^6.10.1",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "jest": "^26.4.2",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

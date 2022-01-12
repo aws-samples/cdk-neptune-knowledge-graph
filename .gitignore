@@ -1,0 +1,10 @@
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+.data
+.jsdocs/
+bin/config.js
+bin/config-bak.js
+.DS_Store

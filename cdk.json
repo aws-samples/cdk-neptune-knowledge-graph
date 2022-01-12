@@ -1,0 +1,5 @@
+{
+  "app": "node bin/knowledge-graph.js",
+  "context": {
+  }
+}

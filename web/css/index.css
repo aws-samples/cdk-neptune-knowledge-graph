@@ -1,0 +1,274 @@
+html,
+body {
+	height: 100%;
+}
+
+#container {
+    height:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+#header {
+    font-size: 16pt;
+    background-color: #242a70;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#header-title {
+    flex: 7;
+}
+
+#target-env {
+    flex: 1;
+}
+
+#header a {
+    text-decoration: none;
+    color: rgb(236, 236, 236);
+}
+
+#target-env {
+    font-size: small;
+    flex: 1;
+    color: gray;
+}
+
+
+#content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+#top-nav {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+#top-nav nav ul li a {
+    margin-right:5px;
+}
+
+#node-view-nav {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+#node-view-nav nav ul li a {
+    margin-right:5px;
+}
+
+#left {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+}
+
+#right {
+    flex: 4;
+    /* background-color: purple; */
+    
+}
+
+#search {
+    flex: 1;
+    border: 1px solid gray;
+    /* background-color: blue; */
+}
+
+#props {
+    flex: 4;
+    width:350px;
+}
+
+#node-id {
+    font-weight: italic;
+    font-size: 8pt;
+}
+
+#node-labels {
+    display: flex;
+    flex-direction: row;
+}
+
+.node-label {
+    border-radius: 10px;
+    margin: 3px;
+    padding: 5px;
+    text-align: center;
+}
+
+.prop-row {
+    width:95%;
+    display:flex;
+    flex-direction:row;
+    margin: 5px;
+}
+
+.prop-key {
+    flex:1;
+}
+
+.prop-value {
+    flex:3;
+}
+
+.prop-x {
+    flex:1;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: lightgray;
+    text-align: center;
+    max-width: 15px;
+    cursor: pointer;
+}
+
+/*
+#node-add-prop {
+    margin-top: 20px;
+}
+*/
+
+#node-delete {
+    margin-top: 5px;
+    border-top: 1px solid gray;
+    padding-top: 5px;
+}
+
+#new-node {
+    flex:1;
+    border: 1px solid gray;
+    padding-top: 5px;
+}
+
+#node-edge {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid gray;
+}
+
+#all-labels {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.edge-label {
+    border-radius: 10px;
+    margin: 3px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* 
+ * Modal Code taken from here: 
+ * https://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/ 
+ */
+
+ .modal-dialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
+  
+  .modal-dialog:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+  
+  .modal-dialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+  }
+  
+  .close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#grid-container {
+    display:none;
+}
+
+#no-parts {
+    display: none;
+}
+
+#parts {
+    display: none;
+}
+
+#parts-container {
+    display: none;
+    padding:5px;
+    width:80%;
+}
+
+#partButtons {
+    display: flex;
+    flex-direction: row;
+}
+
+.part {
+    padding: 5px;
+}
+
+
+#add-edge {
+    display: none;
+}
+
+#add-edge-hide {
+    display: none;
+}

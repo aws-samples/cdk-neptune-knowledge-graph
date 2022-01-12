@@ -1,0 +1,30 @@
+<article>
+    <div id="no-parts">
+        <p>
+            You don't currently have any partitions defined in your cluster. A partition is a way to
+            create separate knowledge graphs for different purposes. You can only view nodes from
+            one partition at a time.
+        </p>
+
+    </div>
+    <div id="parts">
+        <h2>Select a partition</h2>
+        <div id="partButtons">
+            {{ #parts }}
+            <div class="part"><a role="button" class="outline" id="btn-{{.}}">{{.}}</a></div>
+            {{ /parts }}
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="create-part">
+
+        <label for="txt-part">Create a new partition</label>
+
+        <input type="text" id="txt-part" />
+
+        <a role="button" class="outline" id="btn-create-part">Create Partition</a>
+
+    </div>
+</article>

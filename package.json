@@ -1,0 +1,33 @@
+{
+  "name": "cdk-neptune-knowledge-graph",
+  "version": "0.1.0",
+  "bin": {
+    "knowledge-graph": "bin/knowledge-graph.js"
+  },
+  "scripts": {
+    "build": "npm run lint && cd web && npm run build && cd .. && cd lambda && npm run test && npm run build && cd .. && npm run cdk synth && npm run test",
+    "cdk": "cdk",
+    "test": "jest",
+    "lint": "eslint . --fix",
+    "hotswap": "npm run build && cdk deploy --profile dcx-west NeptuneStack --hotswap"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.5.2",
+    "eslint-plugin-promise": "^5.1.1",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-neptune-alpha": "^2.1.0-alpha.0",
+    "@swc/core": "^1.2.128",
+    "@swc/wasm": "^1.2.128",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "aws-cdk": "^2.1.0",
+    "bufferutil": "^4.0.6",
+    "canvas": "^2.8.0",
+    "constructs": "^10.0.12",
+    "retire": "^3.0.6",
+    "ts-node": "^10.4.0",
+    "utf-8-validate": "^5.0.8"
+  }
+}
