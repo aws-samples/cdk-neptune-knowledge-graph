@@ -10,6 +10,7 @@ module.exports = {
     "plugins": ["promise"],
     "parserOptions": {
         "ecmaVersion": 12,
+        "sourceType": "module",
     },
     "rules": {
         "indent": [

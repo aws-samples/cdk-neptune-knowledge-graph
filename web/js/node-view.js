@@ -1,8 +1,8 @@
-const Mustache = require("mustache")
-const { post, del } = require("./rest-api")
-const { getFillStyle, hashColor } = require("./label-colors")
-const render = require("./render")
-const uuid = require("uuid")
+import Mustache from "mustache"
+import { post, del } from "./rest-api"
+import { getFillStyle, hashColor } from "./label-colors"
+import render from "./render"
+import * as uuid from "uuid"
 
 /**
  * Delete a node.
@@ -74,7 +74,7 @@ async function viewNode(graph, node) {
 
     // Get the template
     if (!nodeViewTemplate) {
-        nodeViewTemplate = await (await fetch("tmpl/node-view.html?r=" + Math.random())).text()
+        nodeViewTemplate = await (await fetch("/tmpl/node-view.html?r=" + Math.random())).text()
     }
     
     const view = Object.assign({}, node)
@@ -207,4 +207,4 @@ async function viewNode(graph, node) {
 }
 
 
-module.exports = viewNode
+export default viewNode

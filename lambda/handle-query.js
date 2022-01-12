@@ -90,4 +90,4 @@ function success(resp) {
 
 const PARTITION_HEADER = "x-kg-partition"
 
-module.exports = {handle, success, failure}
+export {handle, success, failure}

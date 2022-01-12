@@ -1,7 +1,7 @@
-const { getParameterByName } = require("./web-util")
-const restApi = require("./rest-api")
-const Cookies = require("js-cookie")
-const { TARGET_ENV } = require("./config")
+import { getParameterByName } from "./web-util"
+import * as restApi from "./rest-api"
+import Cookies from "js-cookie"
+import { TARGET_ENV } from "./config"
 
 /**
  * Set a secure cookie.
@@ -90,4 +90,4 @@ async function checkAuthCode() {
     return false
 }
 
-module.exports = { checkAuthCode, setAuthCookies, setCookie, getCookie, removeCookie }
+export { checkAuthCode, setAuthCookies, setCookie, getCookie, removeCookie }

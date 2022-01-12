@@ -1,5 +1,5 @@
-const util = require("../web/js/web-util")
-const complement = require("../web/js/complement")
+import * as util from "../js/web-util"
+import complement from "../js/complement"
 
 test("hitTest", () => {
 

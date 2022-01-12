@@ -1,6 +1,6 @@
-const locateNode = require("./locate")
-const util = require("./web-util")
-const { getFillStyle } = require("./label-colors")
+import locateNode from "./locate"
+import * as util from "./web-util"
+import { getFillStyle } from "./label-colors"
 
 /**
  * Draw a node that has already been located.
@@ -351,7 +351,7 @@ function initNodeLocations(graph) {
  * @param {*} canvas 
  * @returns 
  */
-module.exports = function render(graph, relocateNodes = true) {
+export default function render(graph, relocateNodes = true) {
 
     console.log("render relocateNodes", relocateNodes)
     console.log("render offset", graph.offset)

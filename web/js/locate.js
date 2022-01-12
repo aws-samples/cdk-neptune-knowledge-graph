@@ -1,4 +1,4 @@
-const util = require("./web-util")
+import * as util from "./web-util"
 
 /**
  * An iterator functions that yields the next point on the spiral.
@@ -25,7 +25,7 @@ function* spiral() {
 * @param {*} graph 
 * @param {*} node 
 */
-module.exports = function locateNode(graph, node) {
+export default function locateNode(graph, node) {
 
     if (node.x !== undefined || node.y !== undefined) {
         console.error("Unexpected node x,y are already defined")

@@ -16,4 +16,6 @@ const LOGIN_URL = `${COGNITO_URL}/login${PARAMS}`
 const LOGOUT_URL = `${COGNITO_URL}/logout${PARAMS}`
 const TARGET_ENV = "dev"
 
-module.exports = { APIGATEWAY_URL, TARGET_ENV, LOGIN_URL, LOGOUT_URL }
+const LOCAL_JWT = "" // Only populate this for local dev
+
+module.exports = { APIGATEWAY_URL, TARGET_ENV, LOGIN_URL, LOGOUT_URL, LOCAL_JWT }

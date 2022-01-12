@@ -1,7 +1,6 @@
-const { APIGATEWAY_URL, LOGIN_URL } = require("./config")
-const Cookies = require("js-cookie")
-const { setAuthCookies } = require("./auth")
-const util = require("util")
+import { APIGATEWAY_URL, LOGIN_URL, LOCAL_JWT } from "./config"
+import Cookies from "js-cookie"
+import { setAuthCookies } from "./auth"
 
 /**
  * Common options for fetch requests
@@ -44,7 +43,7 @@ async function addAuthHeader(options) {
 
     let jwt
     if (window.location.hostname === "localhost") {
-        jwt = require("./jwt")
+        jwt = LOCAL_JWT
         // jwt.js needs a JWT token and we need to be on localhost
         Cookies.set("jwt.id", jwt)
     } 
@@ -70,7 +69,6 @@ async function addAuthHeader(options) {
 
             // Refresh the token
             const data = await get(`jwt-get?refresh=${refresh}`, null, false)
-            console.log(util.inspect(data))
             console.log("jwt-get refresh response: " + JSON.stringify(data, null, 0))
 
             setAuthCookies(data)
@@ -144,4 +142,4 @@ async function get(resource, id, partition, authorize = false) {
     return response.json()
 }
 
-module.exports = { post, del, get }
+export { post, del, get }

@@ -1,7 +1,7 @@
-const Mustache = require("mustache")
-const { post, del } = require("./rest-api")
-const { hashColor } = require("./label-colors")
-const render = require("./render")
+import Mustache from "mustache"
+import { post, del } from "./rest-api"
+import { hashColor } from "./label-colors"
+import render from "./render"
 
 /**
  * Delete an edge.
@@ -52,7 +52,7 @@ async function viewEdge(graph, edge) {
 
     // Get the template
     if (!edgeViewTemplate) {
-        edgeViewTemplate = await (await fetch("tmpl/edge-view.html?r=" + Math.random())).text()
+        edgeViewTemplate = await (await fetch("/tmpl/edge-view.html?r=" + Math.random())).text()
     }
 
     const view = Object.assign({}, edge)
@@ -107,4 +107,4 @@ async function viewEdge(graph, edge) {
 }
 
 
-module.exports = viewEdge
+export default viewEdge

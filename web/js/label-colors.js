@@ -40,4 +40,4 @@ function hashColor(s) {
     return `hsl(${stringUniqueHash % 360}, 95%, 35%)`
 }
 
-module.exports = { getFillStyle, hashColor }
+export { getFillStyle, hashColor }

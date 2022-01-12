@@ -1,8 +1,8 @@
-const render = require("./render")
-const webUtil = require("./web-util")
-const viewNode = require("./node-view")
-const viewEdge = require("./edge-view")
-const focusOn = require("./focus-on")
+import render from "./render"
+import * as webUtil from "./web-util"
+import viewNode from "./node-view"
+import viewEdge from "./edge-view"
+import focusOn from "./focus-on"
 
 /**
  * Get the position of the mouse within the canvas.
@@ -237,4 +237,4 @@ async function dblclick(graph, poz) {
     }
 }
 
-module.exports = { getMousePos, up, down, move, dblclick }
+export { getMousePos, up, down, move, dblclick }

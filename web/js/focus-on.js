@@ -1,5 +1,5 @@
-const { post } = require("./rest-api")
-const render = require("./render")
+import { post } from "./rest-api"
+import render from "./render"
 
 /**
  * Query the database and focus on a single node or reset to view everything.
@@ -7,7 +7,7 @@ const render = require("./render")
  * @param {*} graph 
  * @param {*} node 
  */
-async function focusOn(graph, node, focus = true) {
+export default async function focusOn(graph, node, focus = true) {
     let searchResult
     try {
         const options = {}
@@ -30,5 +30,3 @@ async function focusOn(graph, node, focus = true) {
     }
     render(graph, true)
 }
-
-module.exports = focusOn

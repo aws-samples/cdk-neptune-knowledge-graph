@@ -1,17 +1,17 @@
-require("regenerator-runtime/runtime")
-const { TARGET_ENV } = require("./config")
-const render = require("./render")
-const { post } = require("./rest-api")
-const uuid = require("uuid")
-const { getMousePos, move, up, down, dblclick } = require("./input")
-const viewNode = require("./node-view")
-const { checkAuthCode, setCookie, getCookie, removeCookie } = require("./auth")
-const focusOn = require("./focus-on")
-const restApi = require("./rest-api")
-const { Grid } = require("gridjs")
-const { getFillStyle } = require("./label-colors")
-require("gridjs/dist/theme/mermaid.css")
-const Mustache = require("mustache")
+// require("regenerator-runtime/runtime")
+import { TARGET_ENV } from "./config"
+import render from "./render"
+import { post } from "./rest-api"
+import * as uuid from "uuid"
+import { getMousePos, move, up, down, dblclick } from "./input"
+import viewNode from "./node-view"
+import { checkAuthCode, setCookie, getCookie, removeCookie } from "./auth"
+import focusOn from "./focus-on"
+import * as restApi from "./rest-api"
+import { Grid } from "gridjs"
+import { getFillStyle } from "./label-colors"
+import "gridjs/dist/theme/mermaid.css"
+import Mustache from "mustache"
 
 /**
  * Initialize event handling.
@@ -372,7 +372,7 @@ async function init() {
 
         // Get the template
         if (!partsTemplate) {
-            partsTemplate = await (await fetch("tmpl/partitions.html?r=" + Math.random())).text()
+            partsTemplate = await (await fetch("/tmpl/partitions.html?r=" + Math.random())).text()
         }
 
         // Fetch the list of partitions

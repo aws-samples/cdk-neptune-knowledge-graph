@@ -22,14 +22,14 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/node_modules/@picocss/pico/css/pico.min.css">
 
     <meta name="theme-color" content="#fafafa">
 
-    <script src="https://kit.fontawesome.com/70c0d0128c.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://kit.fontawesome.com/70c0d0128c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -52,18 +52,18 @@
         <div id="top-nav">
             <nav>
                 <ul>
-                    <li><a role="button" class="outline" id="btn-export" 
+                    <li><a href="#" role="button" class="outline" id="btn-export" 
                             data-tooltip="Export"><i class="fas fa-download"></i></a></li>
                             
-                    <li><a role="button" class="outline" id="btn-import" 
+                    <li><a href="#" role="button" class="outline" id="btn-import" 
                         data-tooltip="Import"><i class="fas fa-upload"></i></a>
                         <input type="file" id="import-file" style="display:none">
                     </li>
 
-                    <li><a role="button" class="outline" id="btn-grid"   
+                    <li><a href="#" role="button" class="outline" id="btn-grid"   
                             data-tooltip="Table"><i class="fas fa-table"></i></a></li>
 
-                    <li><a role="button" class="outline" id="btn-canvas" 
+                    <li><a href="#" role="button" class="outline" id="btn-canvas" 
                             data-tooltip="Graph"><i class="fas fa-project-diagram"></i></a></li>
 
                     <li><a href="#new-node-modal" role="button" class="outline" id="btn-canvas" 
@@ -110,7 +110,7 @@
             Create a new node. <br />
             Label: <input type="text" id="txt-new-node-label" /> <br />
             Name: <input type="text" id="txt-new-node-name" /> <br />
-            <a role="button" class="outline" id="btn-new-node">New Node</a>
+            <a href="#" role="button" class="outline" id="btn-new-node">New Node</a>
             <div id="new-node-error"></div>
         </div>
     </div>
@@ -124,9 +124,10 @@
         </div>
     </div>
 
-    <script type="module" src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script type="module" src="js/plugins.js"></script>
-    <script type="module" src="js/main.js"></script>
+    
+    <script type="module" src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script type="module" src="/js/plugins.js"></script>
+    <script type="module" src="/js/main.js"></script>
 
 </body>
 

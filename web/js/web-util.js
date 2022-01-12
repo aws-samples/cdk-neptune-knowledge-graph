@@ -125,5 +125,5 @@ function getTextColor(bgColor, lightColor = "#FFFFFF", darkColor = "#000000") {
     return (L > Math.sqrt((L1 + 0.05) * (L2 + 0.05)) - 0.05) ? darkColor : lightColor
 }
 
-module.exports = { hitTest, hitTestEdge, hexrgb, 
+export { hitTest, hitTestEdge, hexrgb, 
     rgbhex, inverthex, getTextColor, getParameterByName }
