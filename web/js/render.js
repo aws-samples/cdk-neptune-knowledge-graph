@@ -86,10 +86,6 @@ function locateNodes(graph, nodes) {
             edgeNodes.push(fromNode)
         }
 
-        if (node.properties.name === "Braze") {
-            console.info("Braze edges", edgeNodes)
-        }
-
         // Recurse
         if (edgeNodes.size > 0) locateNodes(graph, edgeNodes)
     }
@@ -353,8 +349,8 @@ function initNodeLocations(graph) {
  */
 export default function render(graph, relocateNodes = true) {
 
-    console.log("render relocateNodes", relocateNodes)
-    console.log("render offset", graph.offset)
+    // console.log("render relocateNodes", relocateNodes)
+    // console.log("render offset", graph.offset)
 
     const canvas = graph.canvas
 

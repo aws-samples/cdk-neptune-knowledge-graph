@@ -90,7 +90,7 @@ async function viewNode(graph, node) {
             })
             if (p === "name") {
                 view.header = node.properties[p]
-                console.log("view.header is ", view.header)
+                // console.log("view.header is ", view.header)
             }
         }
     }

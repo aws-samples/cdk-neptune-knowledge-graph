@@ -2,7 +2,7 @@ import render from "./render"
 import * as webUtil from "./web-util"
 import viewNode from "./node-view"
 import viewEdge from "./edge-view"
-import focusOn from "./focus-on"
+import { focusOn } from "./focus-on"
 
 /**
  * Get the position of the mouse within the canvas.
@@ -172,7 +172,7 @@ async function up(graph, poz) {
  */
 function down(graph, poz) {
 
-    console.info("down", poz)
+    // console.info("down", poz)
     
     if (!isGraphValid(graph)) return
 
@@ -207,7 +207,7 @@ function down(graph, poz) {
         start: poz,
         transform,
     }
-    console.log(`Start dragging at ${poz.x} ${poz.y}`)
+    // console.log(`Start dragging at ${poz.x} ${poz.y}`)
 }
 
 
@@ -226,14 +226,14 @@ async function dblclick(graph, poz) {
     let hit = false
     for (const node of graph.data.nodes) {
         if (webUtil.hitTest(graph, node.x, node.y, graph.NODE_RADIUS, poz.x, poz.y)) {
-            await focusOn(graph, node)
+            await focusOn(graph, node.labels[0], "name", node.properties.name)
             hit = true
             break
         }
     }
 
     if (!hit) {
-        await focusOn(graph, null, false)
+        await focusOn(graph, null, null, null, false)
     }
 }
 

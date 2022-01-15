@@ -6,12 +6,12 @@ import * as uuid from "uuid"
 import { getMousePos, move, up, down, dblclick } from "./input"
 import viewNode from "./node-view"
 import { checkAuthCode, setCookie, getCookie, removeCookie } from "./auth"
-import focusOn from "./focus-on"
 import * as restApi from "./rest-api"
 import { Grid } from "gridjs"
 import { getFillStyle } from "./label-colors"
 import "gridjs/dist/theme/mermaid.css"
 import Mustache from "mustache"
+import find from "./find"
 
 /**
  * Initialize event handling.
@@ -90,23 +90,7 @@ function initEvents(graph) {
     const txtFind = document.getElementById("txt-find")
     txtFind.onkeyup = async ({ key }) => {
         const t = txtFind.value
-        for (const node of graph.data.nodes) {
-            const name = node.properties.name
-            if (name && name.toLowerCase() === t.toLowerCase()) {
-                node.selected = true
-                viewNode(graph, node)
-
-                // Center the view on the found node
-                moveToFront(graph.data.nodes, node)
-                render(graph, true)
-
-                if (key === "Enter") {
-                    await focusOn(graph, node)
-                }
-            } else {
-                node.selected = false
-            }
-        }
+        await find(graph, key, t)
     }
 
     // Export and download the data
@@ -197,7 +181,7 @@ function initEvents(graph) {
  */
 function viewGrid(graph) {
 
-    console.log("viewGrid", graph.data.nodes.length)
+    // console.log("viewGrid", graph.data.nodes.length)
 
     const gridContainer = document.getElementById("grid-container")
     gridContainer.innerHTML = ""
@@ -247,22 +231,6 @@ function viewGrid(graph) {
     gridContainer.style.display = "block"
 }
 
-/**
- * Move a node to the front of the array so that it renders first
- * @param {*} nodes 
- * @param {*} node 
- */
-function moveToFront(nodes, node) {
-    let idx = 0
-    for (const n of nodes) {
-        if (n.id === node.id) {
-            break
-        }
-        idx++
-    }
-    nodes.splice(idx, 1)
-    nodes.unshift(node)
-}
 
 /**
  * Initialize an array of colors we'll use for labels.
@@ -318,8 +286,8 @@ async function search(partition) {
     document.getElementById("current-partition").innerHTML = ": " + partition
 
     const canvas = document.getElementById("canvas")
-    const ctx = canvas.getContext("2d")
-    console.info("Starting transform", ctx.getTransform())
+    // const ctx = canvas.getContext("2d")
+    // console.info("Starting transform", ctx.getTransform())
 
     const graph = {
         canvas,

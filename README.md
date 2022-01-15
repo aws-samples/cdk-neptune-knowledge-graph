@@ -20,6 +20,33 @@ _Note that this is sample code, and is not meant to be used in production!_
 
 ![Graph UI](graph-ui.png)
 
+## Data Model
+
+You can store any simple graph data with this general layout:
+
+Node (vertex)
+    - label (immutable after creation)
+    - id (auto generated)
+    - properties: A map of key value pairs
+
+Edge
+    - label (immutable after creation)
+    - properties: A map of key value pairs
+
+The "name" property is special. This is the property used on the canvas as the text in the 
+middle of each node. For edges, the text is the label.
+
+## Usage
+
+### Searching
+
+TODO
+
+### Partitions
+
+TODO
+
+
 ## Deployment
 
 Create your own domain and certificate for the website manually before deploying.
