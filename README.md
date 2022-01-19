@@ -40,7 +40,9 @@ middle of each node. For edges, the text is the label.
 
 ### Searching
 
-TODO
+The search bar can be used to view a subset of the graph or to focus on a particular node. Type in the name of a node and the node will be centered in the view. Hit the Enter key and the graph will reload with only that node and it's immediate relationships. Empty out the search bar and hit Enter again to reload the entire graph. You can also double click on white space somewhere on the canvas and the graph will reload.
+
+Labels can also be searched, for example, type `label:Person` to see just nodes with that label, and all of their direct relationships. You can also combine terms with `and`. For example, you could search for `label:Company and name:John` to see all nodes labeled as Company and also view the node named John, which can be helpful when adding edges between nodes that are scattered in far corners of your knowledge graph.
 
 ### Partitions
 

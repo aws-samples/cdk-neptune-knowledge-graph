@@ -48,8 +48,8 @@ export async function focusOnMultiple(graph, terms) {
 
     for (const term of terms) {
 
-        if (!term.label || !term.key || !term.value) {
-            console.error("term must have key, value, and label")
+        if (!term.label && !term.key && !term.value) {
+            console.error("term must have label or key, value, and label")
             continue
         }
         let searchResult

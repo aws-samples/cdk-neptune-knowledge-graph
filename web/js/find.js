@@ -130,11 +130,14 @@ export default async function find(graph, keyPressed, txt) {
             if (term.label) {
                 if (node.labels[0]?.toLowerCase() === term.label.toLowerCase()) {
                     node.selected = true
+                    term.label = node.labels[0] // Preserve original case
                 } 
             } else {
                 if (node.properties[term.key]?.toLowerCase() === term.value.toLowerCase()) {
                     node.selected = true
+                    term.value = node.properties[term.key] // Preserve case
                     lastLabel = node.labels[0] // Last label wins... ?
+                    term.label = node.labels[0] // Preserve original case
                 } 
             }
         }  
@@ -153,6 +156,8 @@ export default async function find(graph, keyPressed, txt) {
         for (const term of terms) {
             if (term.label === undefined) term.label = lastLabel
         }
+
+        // TODO: Search by label only
 
         console.info("terms", terms)
 
