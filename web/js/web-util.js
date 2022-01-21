@@ -125,5 +125,22 @@ function getTextColor(bgColor, lightColor = "#FFFFFF", darkColor = "#000000") {
     return (L > Math.sqrt((L1 + 0.05) * (L2 + 0.05)) - 0.05) ? darkColor : lightColor
 }
 
+/**
+ * Debounce a function (wait for more input)
+ */
+function debounce(f, t = 1000) {
+    console.log("debounce")
+    let timer
+    return (...args) => {
+        console.log(`About to clear timeout ${timer}`)
+        clearTimeout(timer)
+        timer = setTimeout(() => { 
+            console.log("Calling debounce timeout function")    
+            f.apply(this, args) 
+        }, t)
+    }
+}
+
 export { hitTest, hitTestEdge, hexrgb, 
-    rgbhex, inverthex, getTextColor, getParameterByName }
+    rgbhex, inverthex, getTextColor, getParameterByName,
+    debounce }

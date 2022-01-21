@@ -1,6 +1,5 @@
 import { focusOn, focusOnMultiple } from "./focus-on"
 import render from "./render"
-import viewNode from "./node-view"
 
 /**
  * Move a node to the front of the array so that it renders first
@@ -21,6 +20,40 @@ function moveToFront(nodes, node) {
 }
 
 /**
+ * Select the node, center it, and view details.
+ */
+function highlightNode(graph, node) {
+
+    console.log(`highlightNode ${node.properties.name}`)
+
+    // Highlight the node
+    node.selected = true
+
+    // Show the side panel with node info
+    // This is an issue when many nodes match the entered text
+    // await viewNode(graph, node)
+
+    // Center the view on the found node
+    moveToFront(graph.data.nodes, node)
+    
+    // Re-render the graph
+    render(graph, true)
+}
+
+/**
+ * Debounce a function (wait for more input)
+ */
+function debounce(f, t = 500) {
+    let timer
+    return (...args) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => { 
+            f.apply(this, args) 
+        }, t)
+    }
+}
+
+/**
  * Find a single node by name
  * 
  * @param {*} graph 
@@ -34,36 +67,44 @@ async function findOneByName(graph, name, keyPressed) {
         return
     }
 
+    if (name.length === 1) {
+        return
+    }
+
+    for (const node of graph.data.nodes) {
+        node.selected = false
+    }
+
     for (const node of graph.data.nodes) {
         const nodeval = node.properties["name"]
         if (!nodeval) {
             node.selected = false
             continue
         }
-        if (nodeval.toLowerCase() === name.toLowerCase()) {
 
-            // Highlight the node
-            node.selected = true
+        // Look for nodes that start with the entered text
+        if (nodeval.toLowerCase().startsWith(name.toLowerCase())) {
 
-            // Show the side panel with node info
-            viewNode(graph, node)
-
-            // Center the view on the found node
-            moveToFront(graph.data.nodes, node)
-            render(graph, true)
+            // Delay slightly here so we don't highlight everything as 
+            // the user types something in quickly
+            debounceHighlight(graph, node)
 
             if (keyPressed === "Enter") {
                 // Re-query neptune and return only that node so that we 
                 // see a simplified, filtered view.
                 // Should we do this all client side? Why re-query?
                 // Might be better for when the graph is so big we have to filter.
-                await focusOn(graph, node.labels[0], "name", name)
+                await focusOn(graph, node.labels[0], "name", node.properties.name)
+                return
             }
         } else {
             node.selected = false
         }
     }
 }
+
+// Set up the debounce function so we don't search repeatedly as the user types
+const debounceHighlight = debounce((g, n) => { highlightNode(g, n) })
 
 /**
  * Handle text being entered in the search bar.
@@ -87,17 +128,16 @@ export default async function find(graph, keyPressed, txt) {
     // "Eric" means search for a node with name=Eric
     // "title:PSA" means search for all nodes with title=PSA
     const terms = []
-    const tokens = txt.split(" ")
+    const tokens = txt.split("and")
     for (const token of tokens) {
-        if (token === "and") continue
         const term = {}
         if (token.indexOf(":") > -1) {
             const keyval = token.split(":")
             if (keyval[0] === "label") {
-                term.label = keyval[1]
+                term.label = keyval[1].trim()
             } else {
-                term.key = keyval[0]
-                term.value = keyval[1]
+                term.key = keyval[0].trim()
+                term.value = keyval[1].trim()
             }
             if (!term.label && !term.value) {
                 // User has just typed "something:"
@@ -106,17 +146,20 @@ export default async function find(graph, keyPressed, txt) {
         } else {
             // Assume we are searching by name
             term.key = "name"
-            term.value = token
+            term.value = token.trim()
         }
         terms.push(term)
     }
 
+    // If we have one simple term searching by name, find that node
     if (terms.length === 1 && terms[0].key === "name" && terms[0].value) {
         await findOneByName(graph, terms[0].value, keyPressed)
         return
     }
 
     // Search for multiple nodes
+
+    console.info("Searching for multiple: ", terms)
 
     // Unselect all nodes
     for (const node of graph.data.nodes) {
@@ -153,11 +196,13 @@ export default async function find(graph, keyPressed, txt) {
         // multiple fetches and merge the data client side?
 
         console.log({lastLabel})
+
+        // If lastLabel is ? and the term doesn't have a label, we didn't see it 
+        // in the currently rendered graph, and a neptune query won't return anything
+
         for (const term of terms) {
             if (term.label === undefined) term.label = lastLabel
         }
-
-        // TODO: Search by label only
 
         console.info("terms", terms)
 
