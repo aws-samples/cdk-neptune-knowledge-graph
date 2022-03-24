@@ -272,3 +272,8 @@ body {
 #add-edge-hide {
     display: none;
 }
+
+#edge-id {
+    font-weight: italic;
+    font-size: 8pt;
+}

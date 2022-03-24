@@ -69,7 +69,6 @@ npm i
 cd ../lambda
 npm i
 cd ..
-touch web/js/jwt.js
 npm run build
 cdk deploy --profile your-profile --all
 ```
@@ -83,6 +82,6 @@ for yourself to log in to the application. You should be automatically redirecte
 Cognito when you go to the web app. 
 
 If you are doing local web development, you can put `jwt.id` from your cookies on the deployed
-instance into `web/js/jwt.js` to allow your local browser to use the deployed REST API.
+instance into `web/js/config.js` to allow your local browser to use the deployed REST API.
 
 

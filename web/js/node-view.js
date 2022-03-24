@@ -194,6 +194,7 @@ async function viewNode(graph, node) {
                 await post("edge-post", newEdge, graph.partition)
                 graph.data.edges.push(newEdge)
                 render(graph)
+                // TODO - hide the modal
             } catch (ex) {
                 console.error(ex)
                 alert("Failed to save edge: " + ex)

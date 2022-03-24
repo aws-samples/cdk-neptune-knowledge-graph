@@ -23,8 +23,11 @@ async function checkError(response) {
     if (response.status === 401) {
         // User is not logged in, send them to Cognito
         console.log("Got a 401 from API Gateway, redirecting to Cognito")
-        window.location = LOGIN_URL
-        //throw new Error("401")
+        if (window.location.hostname === "localhost") {
+            console.error("Not redirecting to Cognito from localhost")
+        } else {
+            window.location = LOGIN_URL
+        }
         return
     }
     if (response.status >= 400 && response.status < 600) {
@@ -44,7 +47,6 @@ async function addAuthHeader(options) {
     let jwt
     if (window.location.hostname === "localhost") {
         jwt = LOCAL_JWT
-        // jwt.js needs a JWT token and we need to be on localhost
         Cookies.set("jwt.id", jwt)
     } 
 

@@ -64,6 +64,11 @@ function initEvents(graph) {
         const errorDiv = document.getElementById("new-node-error")
         errorDiv.innerHTML = ""
 
+        if (!name.value || !label.value) {
+            errorDiv.innerHTML = "Name and Label are required"
+            return
+        }
+
         const newNode = {
             id: uuid.v4(),
             properties: {
@@ -73,6 +78,7 @@ function initEvents(graph) {
         }
 
         try {
+            console.log("About to create new node", newNode)
             await post("node-post", newNode, graph.partition)
             errorDiv.innerHTML = "Saved node"
         } catch (ex) {

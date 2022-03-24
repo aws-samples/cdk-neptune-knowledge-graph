@@ -1,7 +1,7 @@
 import * as util from "./web-util"
 
 /**
- * An iterator functions that yields the next point on the spiral.
+ * An iterator function that yields the next point on the spiral.
  */
 function* spiral() {
     const d = 20 // Math.random() * 20 + 20

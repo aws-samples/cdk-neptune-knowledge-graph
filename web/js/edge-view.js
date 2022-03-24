@@ -57,10 +57,14 @@ async function viewEdge(graph, edge) {
 
     const view = Object.assign({}, edge)
 
+    view.to = graph.nodes.get(edge.to).properties.name
+    view.from = graph.nodes.get(edge.from).properties.name
+
     // Put the properties into an array of key value pairs for the template
     if (view.properties && !view.kv) {
         view.kv = []
         for (const p in edge.properties) {
+            if (p === "_partition") continue // Don't display partition strategy property
             view.kv.push({
                 key: p,
                 value: edge.properties[p],
@@ -68,13 +72,11 @@ async function viewEdge(graph, edge) {
         }
     } 
 
+    console.log("edge view: ", view)
+
     const rendered = Mustache.render(edgeViewTemplate, view)
 
     document.getElementById("props").innerHTML = rendered
-
-    const labelEl = document.getElementById("edge-label")
-    labelEl.innerHTML = edge.label
-    labelEl.style.backgroundColor = hashColor(edge.label)
 
     // Set up an event handler for deleting properties
     for (const keyval of view.kv) {

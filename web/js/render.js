@@ -177,7 +177,7 @@ function drawEdge(graph, edge) {
 
     // console.log(`o: ${o}, a: ${a}`)
 
-    // Draw the connecting line by substracting the line segments inside the circles
+    // Draw the connecting line by subtracting the line segments inside the circles
     ctx.beginPath()
 
     let dx = 1
