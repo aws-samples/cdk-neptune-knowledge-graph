@@ -1,6 +1,5 @@
 import Mustache from "mustache"
 import { post, del } from "./rest-api"
-import { hashColor } from "./label-colors"
 import render from "./render"
 
 /**
