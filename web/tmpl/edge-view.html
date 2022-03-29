@@ -19,6 +19,9 @@
             <li><a role="button" class="outline" id="btn-show-add-prop" 
                 href="#add-property-modal"
                 data-tooltip="Add Property"><i class="fas fa-plus"></i></a></li>
+            <li><a role="button" class="outline" id="btn-show-expand" 
+                href="#"
+                data-tooltip="Expand Edge View"><i class="fas fa-expand"></i></a></li>
           </ul>
         </nav>
       </div>
@@ -26,10 +29,11 @@
       <div id="properties"> 
           {{ #kv }}
           <div class="prop-row">
-            <div class="prop-key">{{ key }}:</div>
-            <div class="prop-value">{{ value }}</div>
+            <div class="prop-keyval">{{ key }}:<br/>{{ value }}</div>
+            <div class="prop-delete">
             <a href="#" role="button" class="outline" 
                data-tooltip="Delete Prop" id="prop-x-{{ key }}"><i class="fas fa-minus"></i></a>
+            </div>
           </div>
           {{ /kv }}
       </div>

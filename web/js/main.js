@@ -12,6 +12,7 @@ import { getFillStyle } from "./label-colors"
 import "gridjs/dist/theme/mermaid.css"
 import Mustache from "mustache"
 import find from "./find"
+import { showHide } from "./containers"
 
 /**
  * Initialize event handling.
@@ -174,8 +175,7 @@ function initEvents(graph) {
         viewGrid(graph)
     }
     document.getElementById("btn-canvas").onclick = function () {
-        document.getElementById("grid-container").style.display = "none"
-        document.getElementById("canvas-container").style.display = "block"
+        showHide("canvas")
         render(graph, true)
     }
 }
@@ -233,8 +233,7 @@ function viewGrid(graph) {
         resizable: true,
     }).render(gridContainer)
 
-    document.getElementById("canvas-container").style.display = "none"
-    gridContainer.style.display = "block"
+    showHide("grid")
 }
 
 
@@ -285,9 +284,7 @@ async function search(partition) {
     // console.log(JSON.stringify(searchResult))
 
     // const data = generateTestData()
-    document.getElementById("canvas-container").style.display = "block"
-    document.getElementById("grid-container").style.display = "none"
-    document.getElementById("parts-container").style.display = "none"
+    showHide("canvas")
 
     document.getElementById("current-partition").innerHTML = ": " + partition
 
@@ -368,7 +365,7 @@ async function init() {
 
         const partsContainer = document.getElementById("parts-container")
         partsContainer.innerHTML = rendered
-        partsContainer.style.display = "block"
+        showHide("parts")
 
         if (view.parts.length === 0) {
             document.getElementById("no-parts").style.display = "block"

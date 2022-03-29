@@ -67,6 +67,7 @@ async function viewNode(graph, node) {
     
     // Clear the current info
     document.getElementById("props").innerHTML = ""
+    document.getElementById("props").style.display = "block"
 
     if (!node) {
         return

@@ -89,7 +89,9 @@ body {
 }
 
 #props {
-    flex: 4;
+    position:absolute;
+    top: 160px;
+    left: 40px;
     width:350px;
 }
 
@@ -123,6 +125,14 @@ body {
 
 .prop-value {
     flex:3;
+}
+
+.prop-keyval {
+    flex:3;
+}
+
+.prop-delete {
+    flex:1;
 }
 
 .prop-x {
@@ -276,4 +286,14 @@ body {
 #edge-id {
     font-weight: italic;
     font-size: 8pt;
+}
+
+#edge-view-nav nav ul li {
+    margin-left:5px;
+}
+
+#expand-container {
+    display: none;
+    width: 100%;
+    margin-right: 10px;
 }

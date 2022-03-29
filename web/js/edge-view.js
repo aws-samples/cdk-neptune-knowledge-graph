@@ -1,6 +1,7 @@
 import Mustache from "mustache"
 import { post, del } from "./rest-api"
 import render from "./render"
+import { showHide } from "./containers"
 
 /**
  * Delete an edge.
@@ -35,16 +36,25 @@ async function deleteEdge(graph, edge) {
 let edgeViewTemplate
 
 /**
- * View edge details in the left bar.
+ * View edge details in the left bar or full screen
  * 
  * @param {*} edge 
  */
-async function viewEdge(graph, edge) {
+async function viewEdge(graph, edge, isFullScreen) {
+
     // Clear the current info
+    document.getElementById("props").style.display = "none"
     document.getElementById("props").innerHTML = ""
+    document.getElementById("expand-container").innerHTML = ""
 
     if (!edge) {
         return
+    }
+
+    if (isFullScreen) {
+        showHide("expand")
+    } else {
+        document.getElementById("props").style.display = "block"
     }
 
     if (!edge.properties) edge.properties = {}
@@ -71,11 +81,10 @@ async function viewEdge(graph, edge) {
         }
     } 
 
-    console.log("edge view: ", view)
-
     const rendered = Mustache.render(edgeViewTemplate, view)
 
-    document.getElementById("props").innerHTML = rendered
+    const where = isFullScreen ? "expand-container" : "props" 
+    document.getElementById(where).innerHTML = rendered
 
     // Set up an event handler for deleting properties
     for (const keyval of view.kv) {
@@ -105,6 +114,12 @@ async function viewEdge(graph, edge) {
     // Set up an event handler to delete an edge
     const deleteButton = document.getElementById("btn-delete-edge")
     deleteButton.onclick = async () => { deleteEdge(graph, edge) }
+
+    // Set up an event handler to show the full page edge view/edit screen
+    const expandButton = document.getElementById("btn-show-expand")
+    expandButton.addEventListener("click", async function () {
+        await viewEdge(graph, edge, true); 
+    })
 }
 
 
