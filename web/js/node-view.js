@@ -3,6 +3,7 @@ import { post, del } from "./rest-api"
 import { getFillStyle, hashColor } from "./label-colors"
 import render from "./render"
 import * as uuid from "uuid"
+import { showHide } from "./containers"
 
 /**
  * Delete a node.
@@ -63,14 +64,21 @@ let nodeViewTemplate
  * 
  * @param {*} node 
  */
-async function viewNode(graph, node) {
+async function viewNode(graph, node, isFullScreen) {
     
     // Clear the current info
     document.getElementById("props").innerHTML = ""
-    document.getElementById("props").style.display = "block"
+    document.getElementById("props").style.display = "none"
+    document.getElementById("expand-container").innerHTML = ""
 
     if (!node) {
         return
+    }
+
+    if (isFullScreen) {
+        showHide("expand")
+    } else {
+        document.getElementById("props").style.display = "block"
     }
 
     // Get the template
@@ -111,7 +119,8 @@ async function viewNode(graph, node) {
 
     const rendered = Mustache.render(nodeViewTemplate, view)
 
-    document.getElementById("props").innerHTML = rendered
+    const where = isFullScreen ? "expand-container" : "props" 
+    document.getElementById(where).innerHTML = rendered
 
     for (const ll of nodeLabels) {
         const el = document.getElementById(`node-label-${ll}`)
@@ -156,6 +165,13 @@ async function viewNode(graph, node) {
             document.getElementById("txt-edge-label").value = el.innerHTML
         }
     }
+
+    // Set up an event handler for expanding the view to full screen
+    const expandButton = document.getElementById("btn-show-expand")
+    expandButton.addEventListener("click", async function () {
+        await viewNode(graph, node, true) 
+    })
+
 
     // Remember the last selected node so we can add edges
     if (graph.lastSelectedNode && graph.lastSelectedNode !== node) {

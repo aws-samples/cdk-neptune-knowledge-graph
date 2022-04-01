@@ -8,5 +8,5 @@ export function showHide(name) {
     for (const c of containers) {
         document.getElementById(c + "-container").style.display = (name === c) ? "block" : "none"
     }
-    document.getElementById("props").style.display = "none";
+    document.getElementById("props").style.display = "none"
 }

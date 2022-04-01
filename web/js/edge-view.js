@@ -118,7 +118,7 @@ async function viewEdge(graph, edge, isFullScreen) {
     // Set up an event handler to show the full page edge view/edit screen
     const expandButton = document.getElementById("btn-show-expand")
     expandButton.addEventListener("click", async function () {
-        await viewEdge(graph, edge, true); 
+        await viewEdge(graph, edge, true) 
     })
 }
 
