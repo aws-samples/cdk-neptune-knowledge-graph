@@ -129,6 +129,8 @@ body {
 
 .prop-keyval {
     flex:3;
+    max-width: 200px;
+    overflow: hidden;
 }
 
 .prop-delete {

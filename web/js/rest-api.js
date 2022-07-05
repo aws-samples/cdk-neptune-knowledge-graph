@@ -44,20 +44,25 @@ async function checkError(response) {
  */
 async function addAuthHeader(options) {
 
-    let jwt
-    if (window.location.hostname === "localhost") {
-        jwt = LOCAL_JWT
-        Cookies.set("jwt.id", jwt)
-    } 
-
-    jwt = Cookies.get("jwt.id")
+    let jwt = Cookies.get("jwt.id")
     if (!jwt) {
         // User is not logged in
         console.log("Not logged in")
 
-        // Redirect to Cognito
-        window.location = LOGIN_URL
-        return
+        if (window.location.hostname === "localhost") {
+            if (LOCAL_JWT) {
+                // Set an old expiration so that we force a refresh of the token
+                Cookies.set("jwt.expires", "2022-01-01T17:51:37.639Z")
+            } else {
+                // We can't do anything else here, since we need a real refresh token
+                console.log("Not redirecting to Cognito from localhost, populate LOCAL_JWT with a refresh token")
+                return
+            }
+        } else {
+            // Redirect to Cognito
+            window.location = LOGIN_URL
+            return
+        }
     }
 
     // Refresh the token if it is expired
@@ -65,7 +70,12 @@ async function addAuthHeader(options) {
     if (expiration) {
         const expires = new Date(expiration)
         if (expires < new Date()) {
-            const refresh = Cookies.get("jwt.refresh")
+            let refresh = Cookies.get("jwt.refresh")
+
+            if (window.location.hostname === "localhost") {
+                refresh = LOCAL_JWT
+                Cookies.set("jwt.refresh", jwt)
+            } 
 
             console.log("Refreshing jwt token: " + refresh)
 

@@ -81,7 +81,7 @@ Once the second deployment is done, log in to the AWS console and manually creat
 for yourself to log in to the application. You should be automatically redirected to
 Cognito when you go to the web app. 
 
-If you are doing local web development, you can put `jwt.id` from your cookies on the deployed
-instance into `web/js/config.js` to allow your local browser to use the deployed REST API.
+If you are doing local web development, you can put `jwt.refresh` from your cookies on the deployed
+instance into `web/js/config.js` `LOCAL_JWT` to allow your local browser to use the deployed REST API.
 
 

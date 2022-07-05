@@ -8,3 +8,6 @@ cdk.out
 bin/config.js
 bin/config-bak.js
 .DS_Store
+
+deploy-local.sh
+
