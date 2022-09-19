@@ -62,6 +62,8 @@ before you can complete the configuration in that file.
 Deploy the CDK application. Note that Neptune will consume 2 Elastic IPs in your configured region.
 Also note that these resources will cost money each month!
 
+Besure you are running node 14.x, node 16+ are not supported.
+
 ```sh
 npm i
 cd web
