@@ -14,7 +14,7 @@
     "aws-sdk": "^2.1025.0",
     "axios": "^1.6.0",
     "gremlin": "^3.5.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwk-to-pem": "^2.0.5",
     "neptune-gremlin": "^0.0.6",
     "qs": "^6.10.1",
