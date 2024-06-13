@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "fs-extra": "^10.0.0",
-    "jest": "^26.4.2",
+    "jest": "^29.7.0",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-node-externals": "^3.0.0"
