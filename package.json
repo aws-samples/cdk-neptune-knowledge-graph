@@ -24,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "aws-cdk": "^2.1.0",
     "bufferutil": "^4.0.6",
-    "canvas": "^2.8.0",
+    "canvas": "^3.2.1",
     "constructs": "^10.0.12",
     "retire": "^4.3.3",
     "ts-node": "^10.4.0",
